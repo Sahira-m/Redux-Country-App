@@ -15,7 +15,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import "./Favorite.css";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -35,10 +35,8 @@ export default function FavoriteList()
     useEffect(()=>
     {dispatch(fetchCountryUrl());},
     [dispatch]);
-    
-    console.log("favorite list is",favoriteList);
     return(<TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table" className="CountryTable">
+        <Table sx={{ minWidth: 700 }} aria-label="customized table" className="table">
           <TableHead>
             <TableRow>
               <StyledTableCell>Flag</StyledTableCell>
@@ -47,7 +45,7 @@ export default function FavoriteList()
               <StyledTableCell align="right">Population</StyledTableCell>
               <StyledTableCell align="right">Languages</StyledTableCell>
               <StyledTableCell align="right">Favorite</StyledTableCell>
-              <StyledTableCell align="right">D</StyledTableCell>
+              <StyledTableCell align="right">More Details</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>

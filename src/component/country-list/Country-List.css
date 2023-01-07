@@ -1,0 +1,20 @@
+.table
+{
+    width: 80%;
+    height: 80%;
+    border: 1px solid;
+    color: rgb(214, 74, 74);
+   
+    /* background-color: brown; */
+}
+/* .table thead
+{
+    color: blue;
+    font-family:  'Nunito' sans-serif;
+}
+.table tbody
+{
+    color: rgb(0, 251, 255);
+    font-family:  'Nunito' sans-serif;
+    
+} */

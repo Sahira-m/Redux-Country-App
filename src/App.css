@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  color: rgb(198, 136, 136);
+    font-family:  'Nunito' sans-serif;  
 }
 
 .App-logo {
@@ -21,13 +23,13 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-  font-family:  'Nunito' sans-serif;
+  
+   /* font-family: 'Times New Roman', Times, serif; */
   
 }
 
 .App-link {
-  color: #61dafb;
+  color: #373c3d;
 }
 
 @keyframes App-logo-spin {

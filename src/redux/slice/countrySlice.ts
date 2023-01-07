@@ -20,15 +20,15 @@ reducers:{
     countryLists:(state,action)=>
     {
       state.countryList=action.payload;
-      console.log("states is",state);
-      console.log("country  lis is",state.countryList);
-      console.log("country actionpayload list is",action.payload);
+      //console.log("states is",state);
+      //console.log("country  lis is",state.countryList);
+      //console.log("country actionpayload list is",action.payload);
     },
     favoriteLists:(state,action:PayloadAction<CountryType>)=>
     {
       state.favoriteList.push(action.payload);
-      console.log("favorite actionpayload list is",action.payload);
-      console.log("favorite array list is",state.favoriteList);
+      //console.log("favorite actionpayload list is",action.payload);
+      //console.log("favorite array list is",state.favoriteList);
 
     }
 

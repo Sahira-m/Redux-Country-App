@@ -11,6 +11,7 @@ import "./App.css";
 import { RootState } from "./redux/store";
 import { AppDispatch } from "./redux/store";
 import { fetchCountryUrl } from "./thunk/countryRead";
+import CountryDetails from "./pages/CountryDetails";
 
 function App()
  {
@@ -24,8 +25,11 @@ function App()
   return <div className="App">
     <Routes>
 <Route path= "" element={<Home userInput={userInput} countryList={countryList} setUserInput={setUserInput}   ></Home>} ></Route>
-<Route path= "/favorite" element={<Favorite></Favorite>}  >Fav</Route>
-    </Routes>
+<Route path= "/favorite" element={<Favorite></Favorite>}  ></Route>
+{/* <Route path= "/countries/:name" element={<CountryDetails></CountryDetails>}  ></Route>
+    </Routes> */}
+    <Route path="/countries/:name" element={<CountryDetails />}></Route>
+      </Routes>
   </div>;
 }
 export default App;

@@ -2,61 +2,48 @@ import React  from "react";
 
 //mui
 import CountryItem from "../country-item/countryItem";
-import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import "./Country-List.css";
 //types
 import { CountryType } from "../../types/type";
+
 
 type CountryPropType={ 
   countryList:CountryType[];
     userInput:string;
 
 };
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-     backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-   },
-   [`&.${tableCellClasses.body}`]: {
-     fontSize: 14,
-   },
- }));
- 
+
   
 export default function CountryList(prop:CountryPropType)
 {
  
  const countryResult=prop.countryList.filter((country:CountryType)=> country.name.common.toLocaleLowerCase().includes(prop.userInput.toLowerCase()) )
   
-    
-    /* const dispatch=useDispatch<AppDispatch>();
-    useEffect(()=>
-    {dispatch(fetchCountryUrl());},
-    [dispatch]); */
     console.log("country res list is",countryResult);
     console.log("country list is",prop.countryList);
-    return(<TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table" className="CountryTable">
+    return(
+    <TableContainer component={Paper}> 
+         {/* > <Table sx={{ minWidth: 200 }} aria-label="customized table" className="CountryTable">  */}
+        <Table sx={{ minWidth:100 }} size="small" aria-label="a dense table"  className="table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Flag</StyledTableCell>
-              <StyledTableCell align="right">Name</StyledTableCell>
-              <StyledTableCell align="right">Region</StyledTableCell>
-              <StyledTableCell align="right">Population</StyledTableCell>
-              <StyledTableCell align="right">Languages</StyledTableCell>
-              <StyledTableCell align="right">Favorite</StyledTableCell>
-              <StyledTableCell align="right">D</StyledTableCell>
+              <TableCell>Flag</TableCell>
+              <TableCell align="right">Name</TableCell>
+              <TableCell align="right">Region</TableCell>
+              <TableCell align="right">Population</TableCell>
+              <TableCell align="right">Languages</TableCell>
+              <TableCell align="right">Favorite</TableCell>
+              <TableCell align="right">Details</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {/* {rows.map((row) => ( */}
   {
   countryResult.map((countries)=>
   
