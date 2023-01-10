@@ -1,6 +1,6 @@
 export type  CountryType={
     flags:{png:string;
-            svg:string},
+            svg:string;},
     name: { 
         common:string;
         },

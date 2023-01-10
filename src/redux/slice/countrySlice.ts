@@ -6,10 +6,12 @@ import {CountryType } from "../../types/type";
 type stateType={
     countryList:CountryType[];
     favoriteList:CountryType[];
+    isLoad:boolean;
 };
 const initialState:stateType={
    countryList:[],
    favoriteList:[],
+   isLoad:true,
 };
 
 const countrySlice=createSlice(
@@ -20,16 +22,20 @@ reducers:{
     countryLists:(state,action)=>
     {
       state.countryList=action.payload;
-      //console.log("states is",state);
-      //console.log("country  lis is",state.countryList);
-      //console.log("country actionpayload list is",action.payload);
+      state.isLoad=false;
+    
+
     },
     favoriteLists:(state,action:PayloadAction<CountryType>)=>
     {
       state.favoriteList.push(action.payload);
-      //console.log("favorite actionpayload list is",action.payload);
-      //console.log("favorite array list is",state.favoriteList);
-
+      console.log("favorite actionpayload list is",action.payload);
+     
+     
+    },
+    isLoadSets:(state)=>
+    {
+      state.isLoad=true;
     }
 
 }

@@ -12,13 +12,14 @@ import Alert from '@mui/material/Alert';
 import { Snackbar } from "@mui/material";
 
 //redux store, types ,css
-import "./countryItem.css";
-import countryActions from "../../redux/slice/countrySlice"
+import "./CountryItem.css";
+import countryActions from "../../redux/slice/CountrySlice"
 import { CountryType } from "../../types/type";
 import { RootState,AppDispatch } from "../../redux/store";
- import { Link } from "react-router-dom";
- import { useDispatch } from "react-redux";
-import CountryDetails from "../../pages/CountryDetails";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+
 
 type ListTypes={
     countries:CountryType;    
@@ -26,26 +27,16 @@ type ListTypes={
 
 export default function CountryItem({countries}:ListTypes)
 {
-const url= `https://restcountries.com/v3.1/name/{name}`;
     const dispatch=useDispatch<AppDispatch>();
     const favaoriteList=useSelector((state:RootState)=>state.country.favoriteList);
     const isDuplicated=favaoriteList.some(
       (faoritrItem)=>
       faoritrItem.name.common.toLocaleLowerCase()===countries.name.common.toLocaleLowerCase());
   
-      let isFavorite = favaoriteList.some(
+     /*  let isFavorite = favaoriteList.some(
         (item) => item.name.common === countries.name.common
-      );
-      //alert(isFavorite);
-  /*function getFavorite()
-   {
-    if(!isDuplicated)
-    {
-      dispatch(countryActions.favoriteLists(countries));
-    }
-    else
-    alert("Alraedy in favorite list");  
-  }*/
+      ); */
+     
 //snackbar logic
 const [open, setOpen] = useState(false);
 const [openFail, setOpenFail] = useState(false);
@@ -58,10 +49,10 @@ const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
       return;
     }
-
+setOpenFail(false);
     setOpen(false);
   }; 
-    function addFavorite()
+function addFavorite()
 {
 handleClick();
    if(isDuplicated)
@@ -72,7 +63,6 @@ handleClick();
    else
    {
     dispatch(countryActions.favoriteLists(countries));
-    //dispatch(favoriteActions.addFavorite(products));
     setAlert(true);
     setOpenFail(true);
    }
@@ -90,7 +80,9 @@ handleClick();
   <ul>
        {countries.languages ? (
         Object.entries(countries.languages).map(([key]) => (
-           <p key={key}> <span>{countries.languages[key]}</span></p>
+      
+            <p key={key}> <span>{countries.languages[key]}</span></p>
+           
          ))
        ) : (
          <li>No Languages</li>
@@ -98,32 +90,55 @@ handleClick();
      </ul>
        </TableCell>
        <TableCell> <IconButton aria-label="add to favorites" onClick={addFavorite}>
-       <FavoriteIcon  sx={{ color: isFavorite ? pink[500] : blueGrey }}>
-       </FavoriteIcon>
+       <FavoriteIcon  sx={{ color: isDuplicated ? pink[500] : blueGrey }}>
+       </FavoriteIcon> 
           </IconButton>
         </TableCell>
        <TableCell>
-       {/* {" "}
-          <Link to={`/countries`} onClick={getMoreDetailas}> */}
            <Link to={`/countries/${countries.name.common}`}  > 
             MoreDetails
           </Link>{" "}  </TableCell>
 </TableRow>
-
-{!alertMessage ? 
-(
-        <Snackbar open={open} autoHideDuration={100} onClose={handleClose}>
+ {
+!alertMessage ? 
+(    
+        <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
         
         <Alert severity="warning">The favorite item exist already</Alert>
-      </Snackbar>):
-      <Snackbar  open={openFail} autoHideDuration={100} onClose={handleClose}>
+      </Snackbar>
+      
+      ):
+      
+ <Snackbar  open={openFail} autoHideDuration={1000} onClose={handleClose}>
         <Alert severity="success">Item Added Succesfully</Alert>
     </Snackbar>
+    
+} 
+</Fragment>
 
-}
-   
-</Fragment>);
-}
+);
+/* return
+ !alertMessage ? 
+(    <div>
+        <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
+        
+        <Alert severity="warning">The favorite item exist already</Alert>
+      </Snackbar>
+      </div>
+      ):
+      <div>
+ <Snackbar  open={openFail} autoHideDuration={1000} onClose={handleClose}>
+        <Alert severity="success">Item Added Succesfully</Alert>
+    </Snackbar>
+      </div>
+
+; */
+
+} 
+
+ 
+
+
 
 
 

@@ -1,15 +1,12 @@
 import React from "react";
 
 //Componenets
-import FavoriteList from "../component/favorite-item/favoriteList";
-import Header from "../component/header/headrt";
-import Footer from "../component/Footer/Footer"
+import FavoriteList from "../component/Favorite-item/FavoriteList";
 export default function FavoritePage() 
 {
 return(
-    <div>
-        <Header></Header>
-        <FavoriteList></FavoriteList>
-<Footer></Footer>
-     </div>);    
+     <div>
+         <FavoriteList></FavoriteList> 
+      </div> 
+      );  
 }

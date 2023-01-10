@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
 
-    <React.StrictMode>
+    //<React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
       <App />
@@ -19,7 +19,7 @@ root.render(
    
     </Provider>
    
-     </React.StrictMode> 
+     //</React.StrictMode> 
 );
 
 // If you want to start measuring performance in your app, pass a function

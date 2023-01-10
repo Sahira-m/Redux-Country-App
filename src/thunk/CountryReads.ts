@@ -1,4 +1,4 @@
-import countryActions from "../redux/slice/countrySlice";
+import countryActions from "../redux/slice/CountrySlice";
 import { AppDispatch } from "../redux/store";
 
 const url=`https://restcountries.com/v3.1/all`;
@@ -8,7 +8,10 @@ export function fetchCountryUrl()
    {
     const response =await fetch(url);
     const countryDetails=await response.json();
-    dispatch(countryActions.countryLists(countryDetails)); 
+     
+    //new line
+    dispatch(countryActions.isLoadSets());
+dispatch(countryActions.countryLists(countryDetails));
 
    }
 

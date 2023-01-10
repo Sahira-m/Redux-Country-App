@@ -1,17 +1,15 @@
 
 import React ,{Fragment} from "react";
-import { useSelector } from "react-redux";
 
 //Mui
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import FavoriteIcon from  "@mui/icons-material/Favorite";
-import IconButton from "@mui/material/IconButton";
+
 
 //redux srore,css, types
-import "./countryItem.css";
-import { RootState } from "../../redux/store";
+//import "./countryItem.css";
+//import { RootState } from "../../redux/store";
 import { CountryType } from "../../types/type";
 
 type ListTypes={
@@ -39,9 +37,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 //let favoriteArray:CountryType[];
 export default function FavoriteItem({countries}:ListTypes)
 {
-    const favoriteList=useSelector((state:RootState)=>state.country.favoriteList);
-
-    console.log("favorite array in favorite item",favoriteList);
+   // const favoriteList=useSelector((state:RootState)=>state.country.favoriteList);
   return(<Fragment>
     <StyledTableRow key={crypto.randomUUID()} className ="CountryTable">
   <StyledTableCell component="th" scope="row">
@@ -51,7 +47,7 @@ export default function FavoriteItem({countries}:ListTypes)
   <StyledTableCell align="right">{countries.region}</StyledTableCell>
   <StyledTableCell align="right">{countries.population}</StyledTableCell>
   <StyledTableCell align="left">
-  <ul>
+   <ul>
        {countries.languages ? (
         Object.entries(countries.languages).map(([key]) => (
            <li key={key}>{countries.languages[key]}</li>
@@ -59,14 +55,11 @@ export default function FavoriteItem({countries}:ListTypes)
        ) : (
          <li>No Languages</li>
        )}
-     </ul>
-       </StyledTableCell>
-
-       <StyledTableCell> <IconButton aria-label="add to favorites" >
-          <FavoriteIcon   />
-        </IconButton></StyledTableCell>
-       <StyledTableCell>MoreDetail </StyledTableCell>
-</StyledTableRow></Fragment>);
+     </ul> 
+       </StyledTableCell> 
+      
+</StyledTableRow>
+</Fragment>);
 }
 
 

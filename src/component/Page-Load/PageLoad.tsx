@@ -2,6 +2,7 @@
 import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { useState,useEffect } from 'react';
 
 function LinearProgressWithLabel(props: LinearProgressProps & { value: number }) {
   return (
@@ -18,19 +19,20 @@ function LinearProgressWithLabel(props: LinearProgressProps & { value: number })
   );
 }
 export default function PageLaoad() {
-  const [progress, setProgress] = React.useState(90);
-
-  React.useEffect(() => {
+  const [progress, setProgress] = useState(10);
+  //setProgress((prevProgress) => (prevProgress >= 40 ? 15 : prevProgress + 10));
+ useEffect(() => {
     const timer = setInterval(() => {
-      setProgress((prevProgress) => (prevProgress >= 100 ? 60 : prevProgress + 50));
+      
+      setProgress((prevProgress) => (prevProgress >= 100 ? 10 : prevProgress + 10));
     }, 800);
-    return () => {
-      clearInterval(timer);
-    };
+     return () => {
+       clearInterval(timer);
+     };
   }, []);
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%' }} className ="Load">
       <LinearProgressWithLabel value={progress} />
     </Box>
   );
