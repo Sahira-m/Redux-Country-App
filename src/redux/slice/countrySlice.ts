@@ -21,15 +21,19 @@ initialState,
 reducers:{
     countryLists:(state,action)=>
     {
-      state.countryList=action.payload;
+      
+      
+        state.countryList=action.payload;
       state.isLoad=false;
     
 
     },
     favoriteLists:(state,action:PayloadAction<CountryType>)=>
     {
+      
       state.favoriteList.push(action.payload);
       console.log("favorite actionpayload list is",action.payload);
+      state.isLoad=false;
      
      
     },

@@ -5,6 +5,8 @@ import { useSelector,useDispatch } from "react-redux";
 import { RootState,AppDispatch } from "../../redux/store";
 import { fetchCountryUrl } from "../../thunk/CountryReads";
 import FavoriteItem from "./FavoriteItem";
+import isLoading from "../../redux/slice/CountrySlice";
+import PageLaoad from "../Page-Load/PageLoad";
 
 //Mui
 import Table from '@mui/material/Table';
@@ -21,11 +23,14 @@ import "./Favorite.css";
 export default function FavoriteList()
 {
     const favoriteList=useSelector((state:RootState)=>state.country.favoriteList);
+    const isLoading=useSelector((state:RootState)=>state.country.isLoad);
     const dispatch=useDispatch<AppDispatch>();
     useEffect(()=>
     {dispatch(fetchCountryUrl());},
     [dispatch]);
     return(
+      <div> 
+        {isLoading?<PageLaoad></PageLaoad>:""}
     <TableContainer component={Paper} >
         <Table sx={{ minWidth: 700 }} aria-label="customized table" className="table">
           <TableHead>
@@ -48,5 +53,6 @@ export default function FavoriteList()
   }   
           </TableBody>
         </Table>
-      </TableContainer>);
+      </TableContainer>
+      </div>);
 }

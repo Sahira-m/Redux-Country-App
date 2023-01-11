@@ -39,14 +39,14 @@ export default function FavoriteItem({countries}:ListTypes)
 {
    // const favoriteList=useSelector((state:RootState)=>state.country.favoriteList);
   return(<Fragment>
-    <StyledTableRow key={crypto.randomUUID()} className ="CountryTable">
-  <StyledTableCell component="th" scope="row">
+    <StyledTableRow key={crypto.randomUUID()} className ="CountryTable" >
+  <StyledTableCell component="th" scope="row" width={30}>
   <img src={countries.flags.png} alt={countries.name.common} className="flagImage"></img>
   </StyledTableCell>
-  <StyledTableCell align="right">{countries.name.common}</StyledTableCell>
-  <StyledTableCell align="right">{countries.region}</StyledTableCell>
-  <StyledTableCell align="right">{countries.population}</StyledTableCell>
-  <StyledTableCell align="left">
+  <StyledTableCell align="right" width={30}>{countries.name.common}</StyledTableCell>
+  <StyledTableCell align="right" width={30}>{countries.region}</StyledTableCell>
+  <StyledTableCell align="right" width={30}>{countries.population}</StyledTableCell>
+  <StyledTableCell align="right" width={30}>
    <ul>
        {countries.languages ? (
         Object.entries(countries.languages).map(([key]) => (

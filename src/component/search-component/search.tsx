@@ -1,34 +1,34 @@
 import React from "react";
-
+import { useState } from 'react';
+import { useDispatch } from "react-redux";
 //mui
 import TextField from '@mui/material/TextField';
 import "./Search.css"
+//slice
+import  InputActions from "../../redux/slice/UserInputSlice"
 
-
-type SearchPropType= { userInput:string;
-   setUserInput:Function};
-   
-export default function Search( prop:SearchPropType)
+export default function Search()
 {
-    
+    const [userInput, setUserInput]=useState<string>("");
+    const dispatch=useDispatch();
     function getConutryName(event: React.ChangeEvent<HTMLInputElement> )
     {
       const input =event.target.value;
-     prop.setUserInput(input); 
+     setUserInput(input); 
      console.log(input,"userInputs");
+     dispatch(InputActions.userInputMethod(userInput));
     //clearText();
     } 
 
-
-   /*  function clearText()
+    
+    function clearText()
     {
-        prop.setUserInput("");
-        prop.setUserInput( prop.userInput="",);
-        console.log(" clear inputs",prop.userInput);
-    } */
+        setUserInput("");
+        
+    } 
     return<div className="Text-Field">
 
-<TextField   id="standard-basic" label="Standard" variant="standard"  type="search"   onChange={getConutryName}  />
+<TextField value={userInput}  id="standard-basic" label="Standard" variant="standard"  type="search"   onChange={getConutryName}  />
     
     </div>
     ;

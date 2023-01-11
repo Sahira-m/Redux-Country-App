@@ -1,10 +1,8 @@
 
 import React ,{Fragment,useState} from "react";
-import  {useSelector}  from "react-redux";
-
+import { useSelector,useDispatch } from "react-redux";
 //mui
 import TableCell from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
 import FavoriteIcon from  "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
 import { blueGrey, pink } from "@mui/material/colors";
@@ -17,9 +15,6 @@ import countryActions from "../../redux/slice/CountrySlice"
 import { CountryType } from "../../types/type";
 import { RootState,AppDispatch } from "../../redux/store";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-
-
 
 type ListTypes={
     countries:CountryType;    
@@ -27,16 +22,16 @@ type ListTypes={
 
 export default function CountryItem({countries}:ListTypes)
 {
-    const dispatch=useDispatch<AppDispatch>();
-    const favaoriteList=useSelector((state:RootState)=>state.country.favoriteList);
-    const isDuplicated=favaoriteList.some(
-      (faoritrItem)=>
-      faoritrItem.name.common.toLocaleLowerCase()===countries.name.common.toLocaleLowerCase());
+
+  // search part
+
   
-     /*  let isFavorite = favaoriteList.some(
-        (item) => item.name.common === countries.name.common
-      ); */
-     
+  const dispatch=useDispatch<AppDispatch>();
+  const favaoriteList=useSelector((state:RootState)=>state.country.favoriteList);
+  const isDuplicated=favaoriteList.some(
+  (faoritrItem)=>
+  faoritrItem.name.common.toLocaleLowerCase()===countries.name.common.toLocaleLowerCase());
+  
 //snackbar logic
 const [open, setOpen] = useState(false);
 const [openFail, setOpenFail] = useState(false);
@@ -69,7 +64,7 @@ handleClick();
    
   }
   return(<Fragment>
-    <TableRow key={crypto.randomUUID()} className ="CountryTable" >
+   
   <TableCell component="th" scope="row">
   <img src={countries.flags.png} alt={countries.name.common} className="flagImage"></img>
   </TableCell>
@@ -93,13 +88,7 @@ handleClick();
        <FavoriteIcon  sx={{ color: isDuplicated ? pink[500] : blueGrey }}>
        </FavoriteIcon> 
           </IconButton>
-        </TableCell>
-       <TableCell>
-           <Link to={`/countries/${countries.name.common}`}  > 
-            MoreDetails
-          </Link>{" "}  </TableCell>
-</TableRow>
- {
+          {
 !alertMessage ? 
 (    
         <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
@@ -114,25 +103,15 @@ handleClick();
     </Snackbar>
     
 } 
+        </TableCell>
+       <TableCell>
+           <Link to={`/countries/${countries.name.common}`}  > 
+            MoreDetails
+          </Link>{" "}  </TableCell>
+
 </Fragment>
 
 );
-/* return
- !alertMessage ? 
-(    <div>
-        <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
-        
-        <Alert severity="warning">The favorite item exist already</Alert>
-      </Snackbar>
-      </div>
-      ):
-      <div>
- <Snackbar  open={openFail} autoHideDuration={1000} onClose={handleClose}>
-        <Alert severity="success">Item Added Succesfully</Alert>
-    </Snackbar>
-      </div>
-
-; */
 
 } 
 
