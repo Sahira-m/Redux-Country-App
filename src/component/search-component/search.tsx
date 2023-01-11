@@ -15,20 +15,31 @@ export default function Search()
     {
       const input =event.target.value;
      setUserInput(input); 
-     console.log(input,"userInputs");
+    // console.log(input,"userInputs");
      dispatch(InputActions.userInputMethod(userInput));
     //clearText();
     } 
 
-    
-    function clearText()
+    function keyPress(e: React.KeyboardEvent<HTMLInputElement>)
     {
-        setUserInput("");
+        if (e.keyCode === 13)
+        {
+            setUserInput(""); 
         
-    } 
+             dispatch(InputActions.userInputMethod(userInput));
+        }
+    }
+   
     return<div className="Text-Field">
 
-<TextField value={userInput}  id="standard-basic" label="Standard" variant="standard"  type="search"   onChange={getConutryName}  />
+<TextField value={userInput} 
+ id="standard-basic"
+  label="Standard"
+   variant="standard"
+  type="search" 
+  onChange={getConutryName}
+  //onkeyPress={keyPress}
+  />
     
     </div>
     ;

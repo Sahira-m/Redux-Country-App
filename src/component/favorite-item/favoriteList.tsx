@@ -5,7 +5,6 @@ import { useSelector,useDispatch } from "react-redux";
 import { RootState,AppDispatch } from "../../redux/store";
 import { fetchCountryUrl } from "../../thunk/CountryReads";
 import FavoriteItem from "./FavoriteItem";
-import isLoading from "../../redux/slice/CountrySlice";
 import PageLaoad from "../Page-Load/PageLoad";
 
 //Mui
@@ -17,7 +16,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 //css
-import "./Favorite.css";
+import "./FavoriteList.css";
 
   
 export default function FavoriteList()

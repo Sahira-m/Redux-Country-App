@@ -20,7 +20,6 @@ function LinearProgressWithLabel(props: LinearProgressProps & { value: number })
 }
 export default function PageLaoad() {
   const [progress, setProgress] = useState(10);
-  //setProgress((prevProgress) => (prevProgress >= 40 ? 15 : prevProgress + 10));
  useEffect(() => {
     const timer = setInterval(() => {
       
