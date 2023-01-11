@@ -8,8 +8,6 @@ export function fetchCountryUrl()
    {
     const response =await fetch(url);
     const countryDetails=await response.json();
-     
-    //new line
     dispatch(countryActions.isLoadSets());
 dispatch(countryActions.countryLists(countryDetails));
 
